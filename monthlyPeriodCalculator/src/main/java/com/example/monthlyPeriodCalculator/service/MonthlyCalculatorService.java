@@ -20,8 +20,9 @@ public class MonthlyCalculatorService {
         return false;
     }
 
-    public  void menstrualDayCalculator(String startDate, String startMonth, int checkHowManyMonths) throws DateZException, MonthZException {
-        for (int i = 0; i < checkHowManyMonths; i++) {
+    public  void menstrualDayCalculator(String startDate, String startMonth, String checkHowManyMonths) throws DateZException, MonthZException {
+        int number = Integer.parseInt(checkHowManyMonths);
+        for (int i = 0; i < number; i++) {
 
             int months = validationMonth(startMonth);
             int datezt = validationDate(startDate);
@@ -54,8 +55,9 @@ public class MonthlyCalculatorService {
         }
     }
 
-    public void falliculationDate(String startDate, String startMonth, int checkHowManyMonths) throws MonthZException, DateZException {
-        for (int i = 0; i < checkHowManyMonths; i++) {
+    public void ovulationCalculator(String startDate, String startMonth, String checkHowManyMonths) throws MonthZException, DateZException {
+        int number = Integer.parseInt(checkHowManyMonths);
+        for (int i = 0; i < number; i++) {
             int months = validationMonth(startMonth);
             int datezt = validationDate(startDate);
 
@@ -65,7 +67,7 @@ public class MonthlyCalculatorService {
             int nextOccuranceDate = nextOccurance.getDayOfMonth();
             Month nextOccuranceMonth = nextOccurance.getMonth();
             int nextOccuranceYear = nextOccurance.getYear();
-            int endDate = eventDate.plusDays(5).getDayOfMonth();
+            int endDate = eventDate.plusDays(6).getDayOfMonth();
             Month endMonth = nextOccurance.getMonth();
             int endYear = eventDate.plusMonths(months).getYear();
 
@@ -83,10 +85,41 @@ public class MonthlyCalculatorService {
                     and it will end in  year %d
                                     
                     """, datezt, months, nextOccuranceDate, nextOccuranceMonth, nextOccuranceYear, endDate, endMonth, endYear);
-
-
         }
     }
+    public void freePeriodCalculator(String startDate, String startMonth, String checkHowManyMonths) throws MonthZException, DateZException {
+        int number = Integer.parseInt(checkHowManyMonths);
+        for (int i = 0; i < number; i++) {
+            int months = validationMonth(startMonth);
+            int datezt = validationDate(startDate);
+
+            int presentYear = currentYear.getYear();
+            LocalDate eventDate = LocalDate.of(presentYear, months, datezt);
+            LocalDate nextOccurance = eventDate.plusMonths(i);
+            int nextOccuranceDate = nextOccurance.getDayOfMonth();
+            Month nextOccuranceMonth = nextOccurance.getMonth();
+            int nextOccuranceYear = nextOccurance.getYear();
+            int endDate = eventDate.plusDays(4).getDayOfMonth();
+            Month endMonth = nextOccurance.getMonth();
+            int endYear = eventDate.plusMonths(months).getYear();
+
+            System.out.printf("""
+                    <<==================================>>
+                    the start date is %d
+                    the start month is %d
+                                    
+                    the next occurence date is %d
+                    the next occurence month is %s
+                    the next occurence year is %d
+                                    
+                    and it will end in %s
+                    and it will end in  month %s
+                    and it will end in  year %d
+                                    
+                    """, datezt, months, nextOccuranceDate, nextOccuranceMonth, nextOccuranceYear, endDate, endMonth, endYear);
+        }
+    }
+
     public int validationMonth(String months) throws DateZException, MonthZException {
         if (containsAlphabet(months)) throw new DateZException("invalid date input");
         int monthsz = Integer.parseInt(months) ;
@@ -103,7 +136,9 @@ public class MonthlyCalculatorService {
     public static void main(String[] args) throws MonthZException, DateZException {
    MonthlyCalculatorService monthlyCircle = new MonthlyCalculatorService();
 
-   monthlyCircle.menstrualDayCalculator("4","12",4);
+//   monthlyCircle.menstrualDayCalculator("4","12","4");
+ //   monthlyCircle.ovulation("9","12","4");
+//        monthlyCircle.freePeriodCalculator("9","12","4");
 
     }
 
