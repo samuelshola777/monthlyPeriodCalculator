@@ -27,6 +27,7 @@ public class MonthlyCalculatorService {
               int  startingDate = validationDate(startDate);
                Month startingMonth = Month.of(validationMonth(startMonth));
               int  presentYear = currentYear.getYear();
+              februaryException(startingDate,startingMonth);
              LocalDate  eventDate = LocalDate.of(presentYear, startingMonth, startingDate);
 
                 LocalDate nextOccurrence = eventDate.plusMonths(number);
@@ -43,19 +44,15 @@ public class MonthlyCalculatorService {
         endMonth, endYear);
     }
 
-    public void follicularCalculator(String startDate, String startMonth, String checkHowManyMonths) throws MonthZException, DateZException {
-        int number = Integer.parseInt(checkHowManyMonths);
-        for (int i = 0; i < number; i++) {
-            int months = validationMonth(startMonth);
-            int datezt = validationDate(startDate);
+    public void follicularCalculator(int startDate, Month startMonth, int checkHowManyMonths, int year) throws MonthZException, DateZException {
 
-            int presentYear = currentYear.getYear();
-            LocalDate eventDate = LocalDate.of(presentYear, months, datezt);
-            LocalDate nextOccurance = eventDate.plusMonths(i);
+        
+            LocalDate eventDate = LocalDate.of(year,  startMonth, startDate);
+            LocalDate nextOccurance = eventDate.plusMonths(checkHowManyMonths);
             int nextOccuranceDate = nextOccurance.getDayOfMonth();
             Month nextOccuranceMonth = nextOccurance.getMonth();
             int nextOccuranceYear = nextOccurance.getYear();
-            int endDate = eventDate.plusDays(6).getDayOfMonth();
+            int endDate = eventDate.plusDays(7).getDayOfMonth();
             Month endMonth = nextOccurance.getMonth();
             int endYear = eventDate.plusMonths(months).getYear();
 
@@ -120,11 +117,16 @@ public class MonthlyCalculatorService {
         if (datezz > 31 || datezz < 0)throw new MonthZException("in valid datezz input");
             return datezz;
     }
+    public void  februaryException(int date, Month month) throws DateZException {
+        if (month.equals(Month.FEBRUARY) || date > 28){
+    throw new DateZException("invalid date, february is a 28 month");
+        }
+    }
 
     public static void main(String[] args) throws MonthZException, DateZException {
    MonthlyCalculatorService monthlyCircle = new MonthlyCalculatorService();
 
-        System.out.println(monthlyCircle.menstrualDayCalculator("4", "12", "4"));
+        System.out.println(monthlyCircle.menstrualDayCalculator("2", "2", "1"));
         //   monthlyCircle.ovulation("9","12","4");
 //        monthlyCircle.freePeriodCalculator("9","12","4");
 

@@ -9,35 +9,35 @@ import java.time.Month;
 @Data
 public class MenstrualDaysResponse {
 
-    private int startDate;
-    private Month startMonth;
-    private int startYear;
+    private int menstrualStartDate;
+    private Month menstrualStartMonth;
+    private int menstrualStartYear;
 
-    private int nextOccurrenceDate;
-    private Month nextOccurrenceMonth;
-    private int nextOccurrenceYear;
+    private int menstrualNextOccurrenceDate;
+    private Month menstrualNextOccurrenceMonth;
+    private int menstrualNextOccurrenceYear;
 
-    private int endDate;
-    private Month endMonth;
-    private int endYear;
+    private int menstrualEndDate;
+    private Month menstrualEndMonth;
+    private int menstrualEndYear;
 
 public String toString(){
     return String.format("""
-            start date: %d  
-            start month: %s 
-            start year: %d
+            menstrual start date: %d  
+            menstrual start month: %s 
+            menstrual start year: %d
             
-            nextOccurrenceDate : %d
-            nextOccurrenceMonth : %s
-            nextOccurrenceYear : %d
+            menstrual nextOccurrenceDate : %d
+            menstrual nextOccurrenceMonth : %s
+            menstrual nextOccurrenceYear : %d
             
-            end date: %d
-            end month: %s
-            end year: %d
+            menstrual end date: %d
+            menstrual end month: %s
+            menstrual end year: %d
             
-            """,startDate,startMonth,startYear,
-   nextOccurrenceDate,nextOccurrenceMonth,nextOccurrenceYear,
-            endDate,endMonth,endYear);
+            """,menstrualStartDate,menstrualStartMonth,menstrualStartYear,
+            menstrualNextOccurrenceDate,menstrualNextOccurrenceMonth,menstrualNextOccurrenceYear,
+            menstrualEndDate,menstrualEndMonth,menstrualEndYear);
 }
 
 }
