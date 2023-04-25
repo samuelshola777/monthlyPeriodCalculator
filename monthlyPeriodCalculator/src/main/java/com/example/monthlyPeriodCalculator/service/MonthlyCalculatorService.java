@@ -2,6 +2,7 @@ package com.example.monthlyPeriodCalculator.service;
 
 
 import com.example.monthlyPeriodCalculator.dto.response.FollicullarCalculatorResponse;
+import com.example.monthlyPeriodCalculator.dto.response.LutealCalculatorResponse;
 import com.example.monthlyPeriodCalculator.dto.response.MenstrualDaysResponse;
 import com.example.monthlyPeriodCalculator.exception.DateZException;
 import com.example.monthlyPeriodCalculator.exception.MonthZException;
@@ -60,37 +61,20 @@ public class MonthlyCalculatorService {
           return new FollicullarCalculatorResponse(startDate,startMonth,year,
                   nextOccuranceDate,nextOccuranceMonth,nextOccuranceYear,endDate,endMonth,endYear);
     }
-    public void freePeriodCalculator(String startDate, String startMonth, String checkHowManyMonths) throws MonthZException, DateZException {
-        int number = Integer.parseInt(checkHowManyMonths);
-        for (int i = 0; i < number; i++) {
-            int months = validationMonth(startMonth);
-            int datezt = validationDate(startDate);
+    public LutealCalculatorResponse lutealCalculator(int startDate, int startMonth, int checkHowManyMonths, int year) throws MonthZException, DateZException {
 
-            int presentYear = currentYear.getYear();
-            LocalDate eventDate = LocalDate.of(presentYear, months, datezt);
-            LocalDate nextOccurance = eventDate.plusMonths(i);
+            LocalDate eventDate = LocalDate.of(year, startMonth, startDate);
+            LocalDate nextOccurance = eventDate.plusMonths(checkHowManyMonths);
+
             int nextOccuranceDate = nextOccurance.getDayOfMonth();
             Month nextOccuranceMonth = nextOccurance.getMonth();
             int nextOccuranceYear = nextOccurance.getYear();
+
             int endDate = eventDate.plusDays(4).getDayOfMonth();
             Month endMonth = nextOccurance.getMonth();
-            int endYear = eventDate.plusMonths(months).getYear();
+            int endYear = eventDate.getYear();
 
-            System.out.printf("""
-                    <<==================================>>
-                    the start date is %d
-                    the start month is %d
-                                    
-                    the next occurence date is %d
-                    the next occurence month is %s
-                    the next occurence year is %d
-                                    
-                    and it will end in %s
-                    and it will end in  month %s
-                    and it will end in  year %d
-                                    
-                    """, datezt, months, nextOccuranceDate, nextOccuranceMonth, nextOccuranceYear, endDate, endMonth, endYear);
-        }
+return new LutealCalculatorResponse(startDate,startMonth,startMonth,nextOccuranceDate,nextOccuranceMonth,nextOccuranceYear,endDate,endMonth,endYear);
     }
 
     public int validationMonth(String months) throws DateZException, MonthZException {
@@ -114,7 +98,7 @@ public class MonthlyCalculatorService {
     public static void main(String[] args) throws MonthZException, DateZException {
    MonthlyCalculatorService monthlyCircle = new MonthlyCalculatorService();
 
-//        System.out.println(monthlyCircle.menstrualDayCalculator("2", "2", "1"));
+        System.out.println(monthlyCircle.menstrualDayCalculator("2", "2", "1"));
         System.out.println(monthlyCircle.follicularCalculator(9, 12, 4, 2023));
 //        monthlyCircle.freePeriodCalculator("9","12","4");
 
