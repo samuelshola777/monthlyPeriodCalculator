@@ -1,6 +1,7 @@
 package com.example.monthlyPeriodCalculator.service;
 
 
+import com.example.monthlyPeriodCalculator.dto.response.MenstrualDaysResponse;
 import com.example.monthlyPeriodCalculator.exception.DateZException;
 import com.example.monthlyPeriodCalculator.exception.MonthZException;
 import org.springframework.stereotype.Service;
@@ -20,42 +21,29 @@ public class MonthlyCalculatorService {
         return false;
     }
 
-    public  void menstrualDayCalculator(String startDate, String startMonth, String checkHowManyMonths) throws DateZException, MonthZException {
+    public MenstrualDaysResponse menstrualDayCalculator(String startDate, String startMonth, String checkHowManyMonths) throws DateZException, MonthZException {
         int number = Integer.parseInt(checkHowManyMonths);
-        for (int i = 0; i < number; i++) {
 
-            int months = validationMonth(startMonth);
-            int datezt = validationDate(startDate);
+              int  startingDate = validationDate(startDate);
+               Month startingMonth = Month.of(validationMonth(startMonth));
+              int  presentYear = currentYear.getYear();
+             LocalDate  eventDate = LocalDate.of(presentYear, startingMonth, startingDate);
 
-            int presentYear = currentYear.getYear();
-            LocalDate eventDate = LocalDate.of(presentYear, months, datezt);
-            LocalDate nextOccurance = eventDate.plusMonths(i);
-            int nextOccuranceDate = nextOccurance.getDayOfMonth();
-            Month nextOccuranceMonth = nextOccurance.getMonth();
-            int nextOccuranceYear = nextOccurance.getYear();
-            int endDate = eventDate.plusDays(5).getDayOfMonth();
-            Month endMonth = nextOccurance.getMonth();
-            int endYear = eventDate.plusMonths(months).getYear();
+                LocalDate nextOccurrence = eventDate.plusMonths(number);
+           int     nextOccurrenceDate = nextOccurrence.getDayOfMonth();
+           Month     nextOccurrenceMonth = nextOccurrence.getMonth();
+            int    nextOccurrenceYear = nextOccurrence.getYear();
 
-            System.out.printf("""
-                    <<==================================>>
-                    the start date is %d
-                    the start month is %d
-                                    
-                    the next occurence date is %d
-                    the next occurence month is %s
-                    the next occurence year is %d
-                                    
-                    and it will end in %s
-                    and it will end in  month %s
-                    and it will end in  year %d
-                                    
-                    """, datezt, months, nextOccuranceDate, nextOccuranceMonth, nextOccuranceYear, endDate, endMonth, endYear);
-
-        }
+            int    endDate = eventDate.plusDays(5).getDayOfMonth();
+            Month    endMonth = nextOccurrence.getMonth();
+            int    endYear = eventDate.getYear();
+        return new MenstrualDaysResponse(startingDate,
+        startingMonth, presentYear, nextOccurrenceDate,
+        nextOccurrenceMonth, nextOccurrenceYear, endDate,
+        endMonth, endYear);
     }
 
-    public void ovulationCalculator(String startDate, String startMonth, String checkHowManyMonths) throws MonthZException, DateZException {
+    public void follicularCalculator(String startDate, String startMonth, String checkHowManyMonths) throws MonthZException, DateZException {
         int number = Integer.parseInt(checkHowManyMonths);
         for (int i = 0; i < number; i++) {
             int months = validationMonth(startMonth);
@@ -136,8 +124,8 @@ public class MonthlyCalculatorService {
     public static void main(String[] args) throws MonthZException, DateZException {
    MonthlyCalculatorService monthlyCircle = new MonthlyCalculatorService();
 
-//   monthlyCircle.menstrualDayCalculator("4","12","4");
- //   monthlyCircle.ovulation("9","12","4");
+        System.out.println(monthlyCircle.menstrualDayCalculator("4", "12", "4"));
+        //   monthlyCircle.ovulation("9","12","4");
 //        monthlyCircle.freePeriodCalculator("9","12","4");
 
     }
