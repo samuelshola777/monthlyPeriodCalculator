@@ -1,12 +1,17 @@
 package com.example.monthlyPeriodCalculator.dto.response;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.Month;
+@Entity
 @Data
 @AllArgsConstructor
 public class LutealCalculatorResponse {
+    @Id
+    private long id;
     private int lutealStartDate;
     private int lutealStartMonth;
     private int lutealStartYear;
@@ -18,6 +23,10 @@ public class LutealCalculatorResponse {
     private int lutealEndDate;
     private Month lutealEndMonth;
     private int lutealEndYear;
+
+    public LutealCalculatorResponse() {
+
+    }
 
     public String toString() {
         return String.format("""

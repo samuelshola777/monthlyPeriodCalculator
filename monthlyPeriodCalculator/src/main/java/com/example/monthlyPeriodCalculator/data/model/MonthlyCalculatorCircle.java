@@ -1,9 +1,7 @@
 package com.example.monthlyPeriodCalculator.data.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.monthlyPeriodCalculator.dto.response.*;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,11 +15,15 @@ public class MonthlyCalculatorCircle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String menstrualDate;
-    // falliculationdays 10 dayss
-    private String falliculationDate;
-    // ovulationDate  days2
-    private String ovulationDate;
-    // lutealDays 10 days
-    private String lutealDate;
+    @OneToOne
+    private FollicullarCalculatorResponse follicularPeriod;
+    @OneToOne
+    private FreePeriodCalculatorResponse freePeriod;
+    @OneToOne
+    private LutealCalculatorResponse lutealPeriod;
+    @OneToOne
+    private MenstrualDaysResponse menstrualPeriod;
+    @OneToOne
+    private OvulationCalculatorResponse ovulationPeriod;
+
 }

@@ -1,13 +1,17 @@
 package com.example.monthlyPeriodCalculator.dto.response;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.Month;
-
+@Entity
 @AllArgsConstructor
 @Data
 public class MenstrualDaysResponse {
+    @Id
+    private long id;
 
     private int menstrualStartDate;
     private Month menstrualStartMonth;
