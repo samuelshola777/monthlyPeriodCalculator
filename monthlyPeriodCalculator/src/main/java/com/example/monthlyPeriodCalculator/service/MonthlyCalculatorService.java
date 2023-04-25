@@ -45,8 +45,9 @@ public class MonthlyCalculatorService {
         endMonth, endYear);
     }
 
-    public FollicullarCalculatorResponse follicularCalculator(int startDate, Month startMonth, int checkHowManyMonths, int year) throws MonthZException, DateZException {
-            LocalDate eventDate = LocalDate.of(year,  startMonth, startDate);
+    public FollicullarCalculatorResponse follicularCalculator(int startDate, int startMonthz, int checkHowManyMonths, int year) throws MonthZException, DateZException {
+            LocalDate eventDate = LocalDate.of(year,  startMonthz, startDate);
+           Month startMonth =  Month.of(startMonthz);
 
             LocalDate nextOccurance = eventDate.plusMonths(checkHowManyMonths);
             int nextOccuranceDate = nextOccurance.getDayOfMonth();
@@ -55,7 +56,7 @@ public class MonthlyCalculatorService {
 
             int endDate = eventDate.plusDays(7).getDayOfMonth();
             Month endMonth = nextOccurance.getMonth();
-            int endYear = eventDate.getYear();
+            int endYear = nextOccurance.getYear();
           return new FollicullarCalculatorResponse(startDate,startMonth,year,
                   nextOccuranceDate,nextOccuranceMonth,nextOccuranceYear,endDate,endMonth,endYear);
     }
@@ -113,8 +114,8 @@ public class MonthlyCalculatorService {
     public static void main(String[] args) throws MonthZException, DateZException {
    MonthlyCalculatorService monthlyCircle = new MonthlyCalculatorService();
 
-        System.out.println(monthlyCircle.menstrualDayCalculator("2", "2", "1"));
-        //   monthlyCircle.ovulation("9","12","4");
+//        System.out.println(monthlyCircle.menstrualDayCalculator("2", "2", "1"));
+        System.out.println(monthlyCircle.follicularCalculator(9, 12, 4, 2023));
 //        monthlyCircle.freePeriodCalculator("9","12","4");
 
     }
