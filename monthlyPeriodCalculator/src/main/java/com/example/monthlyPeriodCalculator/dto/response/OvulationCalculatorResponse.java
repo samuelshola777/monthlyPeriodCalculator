@@ -18,4 +18,25 @@ public class OvulationCalculatorResponse {
     private int OvulationEndDate;
     private Month OvulationEndMonth;
     private int OvulationEndYear;
+
+    public String toString() {
+        return String.format("""
+                        Ovulation start date: %d  
+                        Ovulation start month: %s 
+                        Ovulation start year: %d
+                           
+                        Ovulation nextOccurrenceDate : %d
+                        Ovulation nextOccurrenceMonth : %s
+                        Ovulation nextOccurrenceYear : %d
+                           
+                        Ovulation end date: %d
+                        Ovulation end month: %s
+                        Ovulation end year: %d
+                           
+                           """, getOvulationStartDate(), getOvulationStartMonth()
+                , getOvulationStartYear(), getOvulationNextOccurrenceDate(),
+                getOvulationNextOccurrenceMonth(), getOvulationNextOccurrenceYear(),
+                getOvulationEndDate(), getOvulationEndMonth(), getOvulationEndYear());
+
+    }
 }

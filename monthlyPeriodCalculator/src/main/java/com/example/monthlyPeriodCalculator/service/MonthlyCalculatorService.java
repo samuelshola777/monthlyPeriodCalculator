@@ -61,7 +61,7 @@ public class MonthlyCalculatorService {
           return new FollicullarCalculatorResponse(startDate,startMonth,year,
                   nextOccuranceDate,nextOccuranceMonth,nextOccuranceYear,endDate,endMonth,endYear);
     }
-    public LutealCalculatorResponse lutealCalculator(int startDate, int startMonth, int checkHowManyMonths, int year) throws MonthZException, DateZException {
+    public LutealCalculatorResponse luteCalculator(int startDate, int startMonth, int checkHowManyMonths, int year) throws MonthZException, DateZException {
 
             LocalDate eventDate = LocalDate.of(year, startMonth, startDate);
             LocalDate nextOccurance = eventDate.plusMonths(checkHowManyMonths);
@@ -72,11 +72,13 @@ public class MonthlyCalculatorService {
 
             int endDate = eventDate.plusDays(4).getDayOfMonth();
             Month endMonth = nextOccurance.getMonth();
-            int endYear = eventDate.getYear();
+            int endYear = nextOccurance.getYear();
 
-return new LutealCalculatorResponse(startDate,startMonth,startMonth,nextOccuranceDate,nextOccuranceMonth,nextOccuranceYear,endDate,endMonth,endYear);
+return new LutealCalculatorResponse(startDate,startMonth
+        ,startMonth,nextOccuranceDate,nextOccuranceMonth
+        ,nextOccuranceYear,endDate,endMonth,endYear);
     }
-
+    public
     public int validationMonth(String months) throws DateZException, MonthZException {
         if (containsAlphabet(months)) throw new DateZException("invalid date input");
         int monthsz = Integer.parseInt(months) ;
@@ -98,9 +100,9 @@ return new LutealCalculatorResponse(startDate,startMonth,startMonth,nextOccuranc
     public static void main(String[] args) throws MonthZException, DateZException {
    MonthlyCalculatorService monthlyCircle = new MonthlyCalculatorService();
 
-        System.out.println(monthlyCircle.menstrualDayCalculator("2", "2", "1"));
-        System.out.println(monthlyCircle.follicularCalculator(9, 12, 4, 2023));
-//        monthlyCircle.freePeriodCalculator("9","12","4");
+//        System.out.println(monthlyCircle.menstrualDayCalculator("2", "2", "1"));
+//        System.out.println(monthlyCircle.follicularCalculator(9, 12, 1, 2023));
+        System.out.println(monthlyCircle.luteCalculator(9, 12, 1, 2023));
 
     }
 
