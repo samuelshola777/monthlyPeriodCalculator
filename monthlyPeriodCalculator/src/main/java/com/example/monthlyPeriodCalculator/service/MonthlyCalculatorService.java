@@ -2,6 +2,7 @@ package com.example.monthlyPeriodCalculator.service;
 
 
 import com.example.monthlyPeriodCalculator.dto.response.FollicullarCalculatorResponse;
+import com.example.monthlyPeriodCalculator.dto.response.FreePeriodCalculatorResponse;
 import com.example.monthlyPeriodCalculator.dto.response.LutealCalculatorResponse;
 import com.example.monthlyPeriodCalculator.dto.response.MenstrualDaysResponse;
 import com.example.monthlyPeriodCalculator.exception.DateZException;
@@ -78,7 +79,23 @@ return new LutealCalculatorResponse(startDate,startMonth
         ,startMonth,nextOccuranceDate,nextOccuranceMonth
         ,nextOccuranceYear,endDate,endMonth,endYear);
     }
-    public
+    public FreePeriodCalculatorResponse freePeriodicCalculator(int startDate, int startMonthz, int checkHowManyMonths, int year){
+        LocalDate eventDate = LocalDate.of(year, startMonthz, startDate);
+        LocalDate nextOccurance = eventDate.plusMonths(checkHowManyMonths);
+
+        int nextOccuranceDate = nextOccurance.getDayOfMonth();
+        Month nextOccuranceMonth = nextOccurance.getMonth();
+        int nextOccuranceYear = nextOccurance.getYear();
+
+        int endDate = eventDate.plusDays(3).getDayOfMonth();
+        Month endMonth = nextOccurance.getMonth();
+        int endYear = nextOccurance.getYear();
+
+        return new FreePeriodCalculatorResponse(startDate,startMonthz
+                ,year,nextOccuranceDate,nextOccuranceMonth
+                ,nextOccuranceYear,endDate,endMonth,endYear);
+    }
+
     public int validationMonth(String months) throws DateZException, MonthZException {
         if (containsAlphabet(months)) throw new DateZException("invalid date input");
         int monthsz = Integer.parseInt(months) ;
@@ -102,8 +119,8 @@ return new LutealCalculatorResponse(startDate,startMonth
 
 //        System.out.println(monthlyCircle.menstrualDayCalculator("2", "2", "1"));
 //        System.out.println(monthlyCircle.follicularCalculator(9, 12, 1, 2023));
-        System.out.println(monthlyCircle.luteCalculator(9, 12, 1, 2023));
-
+//        System.out.println(monthlyCircle.luteCalculator(9, 12, 1, 2023));
+        System.out.println(monthlyCircle.freePeriodicCalculator(9, 12, 1, 2023));
     }
 
 }
