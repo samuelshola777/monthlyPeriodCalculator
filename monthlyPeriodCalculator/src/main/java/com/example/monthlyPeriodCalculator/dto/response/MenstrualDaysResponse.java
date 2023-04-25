@@ -4,9 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.Month;
 @Entity
+@NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class MenstrualDaysResponse {
@@ -24,8 +26,15 @@ public class MenstrualDaysResponse {
     private int menstrualEndDate;
     private Month menstrualEndMonth;
     private int menstrualEndYear;
+    private int howManyMonth;
 
-public String toString(){
+//    public MenstrualDaysResponse(int startingDate, Month startingMonth, int presentYear, int nextOccurrenceDate, Month nextOccurrenceMonth, int nextOccurrenceYear, int endDate, Month endMonth, int endYear) {
+//    }
+
+//    public MenstrualDaysResponse(int startingDate, Month startingMonth, int presentYear, int nextOccurrenceDate, Month nextOccurrenceMonth, int nextOccurrenceYear, int endDate, Month endMonth, int endYear, int number) {
+//    }
+
+    public String toString(){
     return String.format("""
             menstrual start date: %d  
             menstrual start month: %s 

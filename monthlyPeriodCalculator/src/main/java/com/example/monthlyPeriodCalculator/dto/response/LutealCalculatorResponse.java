@@ -4,9 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.Month;
 @Entity
+@NoArgsConstructor
 @Data
 @AllArgsConstructor
 public class LutealCalculatorResponse {
@@ -23,9 +25,8 @@ public class LutealCalculatorResponse {
     private int lutealEndDate;
     private Month lutealEndMonth;
     private int lutealEndYear;
-
-    public LutealCalculatorResponse() {
-
+    private int howManyMonth;
+    public LutealCalculatorResponse(int startDate, int startMonth, int startMonth1, int nextOccuranceDate, Month nextOccuranceMonth, int nextOccuranceYear, int endDate, Month endMonth, int endYear) {
     }
 
     public String toString() {

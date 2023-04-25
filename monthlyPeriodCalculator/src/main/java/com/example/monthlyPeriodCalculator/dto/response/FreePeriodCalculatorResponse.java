@@ -4,14 +4,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.Month;
+@NoArgsConstructor
 @Data
 @Entity
 @AllArgsConstructor
 public class FreePeriodCalculatorResponse {
     @Id
     private long id;
+
     private int freePeriodStartDate;
     private int freePeriodStartMonth;
     private int freePeriodStartYear;
@@ -23,9 +26,9 @@ public class FreePeriodCalculatorResponse {
     private int freePeriodEndDate;
     private Month freePeriodEndMonth;
     private int freePeriodEndYear;
+    private int howManyMonth;
 
-    public FreePeriodCalculatorResponse() {
-
+    public FreePeriodCalculatorResponse(int startDate, int startMonthz, int year, int nextOccuranceDate, Month nextOccuranceMonth, int nextOccuranceYear, int endDate, Month endMonth, int endYear) {
     }
 
     public String toString() {

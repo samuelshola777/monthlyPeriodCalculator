@@ -1,6 +1,7 @@
 package com.example.monthlyPeriodCalculator.service;
 
 
+import com.example.monthlyPeriodCalculator.data.model.MonthlyCalculatorCircle;
 import com.example.monthlyPeriodCalculator.dto.response.FollicullarCalculatorResponse;
 import com.example.monthlyPeriodCalculator.dto.response.FreePeriodCalculatorResponse;
 import com.example.monthlyPeriodCalculator.dto.response.LutealCalculatorResponse;
@@ -26,7 +27,6 @@ public class MonthlyCalculatorService {
 
     public MenstrualDaysResponse menstrualDayCalculator(String startDate, String startMonth, String checkHowManyMonths) throws DateZException, MonthZException {
         int number = Integer.parseInt(checkHowManyMonths);
-
               int  startingDate = validationDate(startDate);
                Month startingMonth = Month.of(validationMonth(startMonth));
               int  presentYear = currentYear.getYear();
@@ -44,7 +44,8 @@ public class MonthlyCalculatorService {
         return new MenstrualDaysResponse(startingDate,
         startingMonth, presentYear, nextOccurrenceDate,
         nextOccurrenceMonth, nextOccurrenceYear, endDate,
-        endMonth, endYear);
+        endMonth, endYear,number);
+
     }
 
     public FollicullarCalculatorResponse follicularCalculator(int startDate, int startMonthz, int checkHowManyMonths, int year) throws MonthZException, DateZException {
@@ -94,6 +95,12 @@ return new LutealCalculatorResponse(startDate,startMonth
         return new FreePeriodCalculatorResponse(startDate,startMonthz
                 ,year,nextOccuranceDate,nextOccuranceMonth
                 ,nextOccuranceYear,endDate,endMonth,endYear);
+    }
+
+    public MonthlyCalculatorCircle monthlyCalculatorCircle(String startDate, String startMonth, String checkHowManyMonths) throws MonthZException, DateZException {
+
+        MenstrualDaysResponse menstrualDays = menstrualDayCalculator(startDate,startMonth,checkHowManyMonths);
+        FollicullarCalculatorResponse follicullarCalculator = follicularCalculator(menstrualDays.getMenstrualStartDate(),menstrualDays.getMenstrualStartMonth(),menstrualDays.getMenstrualStartYear(),menstrualDays.nu)
     }
 
     public int validationMonth(String months) throws DateZException, MonthZException {
