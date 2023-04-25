@@ -1,6 +1,7 @@
 package com.example.monthlyPeriodCalculator.service;
 
 
+import com.example.monthlyPeriodCalculator.dto.response.FollicullarCalculatorResponse;
 import com.example.monthlyPeriodCalculator.dto.response.MenstrualDaysResponse;
 import com.example.monthlyPeriodCalculator.exception.DateZException;
 import com.example.monthlyPeriodCalculator.exception.MonthZException;
@@ -44,33 +45,19 @@ public class MonthlyCalculatorService {
         endMonth, endYear);
     }
 
-    public void follicularCalculator(int startDate, Month startMonth, int checkHowManyMonths, int year) throws MonthZException, DateZException {
-
-        
+    public FollicullarCalculatorResponse follicularCalculator(int startDate, Month startMonth, int checkHowManyMonths, int year) throws MonthZException, DateZException {
             LocalDate eventDate = LocalDate.of(year,  startMonth, startDate);
+
             LocalDate nextOccurance = eventDate.plusMonths(checkHowManyMonths);
             int nextOccuranceDate = nextOccurance.getDayOfMonth();
             Month nextOccuranceMonth = nextOccurance.getMonth();
             int nextOccuranceYear = nextOccurance.getYear();
+
             int endDate = eventDate.plusDays(7).getDayOfMonth();
             Month endMonth = nextOccurance.getMonth();
-            int endYear = eventDate.plusMonths(months).getYear();
-
-            System.out.printf("""
-                    <<==================================>>
-                    the start date is %d
-                    the start month is %d
-                                    
-                    the next occurence date is %d
-                    the next occurence month is %s
-                    the next occurence year is %d
-                                    
-                    and it will end in %s
-                    and it will end in  month %s
-                    and it will end in  year %d
-                                    
-                    """, datezt, months, nextOccuranceDate, nextOccuranceMonth, nextOccuranceYear, endDate, endMonth, endYear);
-        }
+            int endYear = eventDate.getYear();
+          return new FollicullarCalculatorResponse(startDate,startMonth,year,
+                  nextOccuranceDate,nextOccuranceMonth,nextOccuranceYear,endDate,endMonth,endYear);
     }
     public void freePeriodCalculator(String startDate, String startMonth, String checkHowManyMonths) throws MonthZException, DateZException {
         int number = Integer.parseInt(checkHowManyMonths);
