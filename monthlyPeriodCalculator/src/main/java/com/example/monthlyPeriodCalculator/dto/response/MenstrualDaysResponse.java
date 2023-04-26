@@ -2,30 +2,37 @@ package com.example.monthlyPeriodCalculator.dto.response;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.Month;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@RequiredArgsConstructor
 public class MenstrualDaysResponse {
     @Id
     private long id;
-
+@NonNull
     private int menstrualStartDate;
-    private Month menstrualStartMonth;
+    @NonNull
+    private String menstrualStartMonth;
+    @NonNull
     private int menstrualStartYear;
+    @NonNull
 
     private int menstrualNextOccurrenceDate;
+    @NonNull
     private Month menstrualNextOccurrenceMonth;
+    @NonNull
     private int menstrualNextOccurrenceYear;
-
+    @NonNull
     private int menstrualEndDate;
+    @NonNull
     private Month menstrualEndMonth;
+    @NonNull
     private int menstrualEndYear;
+    @NonNull
     private int howManyMonth;
 
 //    public MenstrualDaysResponse(int startingDate, Month startingMonth, int presentYear, int nextOccurrenceDate, Month nextOccurrenceMonth, int nextOccurrenceYear, int endDate, Month endMonth, int endYear) {

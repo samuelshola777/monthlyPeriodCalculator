@@ -2,35 +2,39 @@ package com.example.monthlyPeriodCalculator.data.model;
 
 import com.example.monthlyPeriodCalculator.dto.response.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 @Data
 @Entity
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+
+@RequiredArgsConstructor
 public class MonthlyCalculatorCircle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @JsonIgnore
-    @OneToOne
-    private FollicullarCalculatorResponse follicularPeriod;
-    @JsonIgnore
-    @OneToOne
-    private FreePeriodCalculatorResponse freePeriod;
-    @JsonIgnore
-    @OneToOne
-    private LutealCalculatorResponse lutealPeriod;
+    @NonNull
     @JsonIgnore
     @OneToOne
     private MenstrualDaysResponse menstrualPeriod;
     @JsonIgnore
     @OneToOne
+    @NonNull
+    private FollicullarCalculatorResponse follicularPeriod;
+    @NonNull
+    @JsonIgnore
+    @OneToOne
     private OvulationCalculatorResponse ovulationPeriod;
+    @JsonIgnore
+    @OneToOne
+    @NonNull
+    private FreePeriodCalculatorResponse freePeriod;
 
+
+
+    public MonthlyCalculatorCircle() {
+
+    }
 }
