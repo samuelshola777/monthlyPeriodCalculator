@@ -36,11 +36,25 @@ public class MonthlyCalculatorCircle {
    public String toString() {
     return String.format("""
             Menstrual period Start date : %d
-            Menstrual period start month : %d
+            Menstrual period start month : %s
             Menstrual period start end  : %d
+            Menstrual period next Occurrence date : %d
+            Menstrual period next occurrence month : %s
+            Menstrual period next occurrence year : %d
+            Menstrual period End date : %d
+            Menstrual period End Month : %s
+            Menstrual period End year : %s
+    <<--------------------------------------->>
             
-            """,menstrualPeriod.getMenstrualStartDate(),menstrualPeriod.getMenstrualStartMonth()
-    ,menstrualPeriod.getMenstrualStartYear(),menstrualPeriod.getMenstrualNextOccurrenceDate(),menstrualPeriod.getMenstrualNextOccurrenceMonth(),menstrualPeriod.getMenstrualNextOccurrenceYear())
+    """,menstrualPeriod.getMenstrualStartDate()
+       ,menstrualPeriod.getMenstrualStartMonth()
+        ,menstrualPeriod.getMenstrualStartYear(),
+    menstrualPeriod.getMenstrualNextOccurrenceDate(),
+    menstrualPeriod.getMenstrualNextOccurrenceMonth(),
+    menstrualPeriod.getMenstrualNextOccurrenceYear(),
+    menstrualPeriod.getMenstrualEndDate(),
+    menstrualPeriod.getMenstrualEndMonth(),
+    menstrualPeriod.getMenstrualEndYear());
    }
 
     public MonthlyCalculatorCircle() {
