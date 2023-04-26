@@ -18,7 +18,7 @@ public class OvulationCalculatorResponse {
     @NonNull
     private int OvulationStartDate;
     @NonNull
-    private int OvulationStartMonth;
+    private Month OvulationStartMonth;
     @NonNull
     private int OvulationStartYear;
     @NonNull

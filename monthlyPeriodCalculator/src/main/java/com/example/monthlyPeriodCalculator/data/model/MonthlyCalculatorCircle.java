@@ -43,10 +43,10 @@ public class MonthlyCalculatorCircle {
             Menstrual period next occurrence year : %d
             Menstrual period End date : %d
             Menstrual period End Month : %s
-            Menstrual period End year : %s
+            Menstrual period End year : %d
     <<--------------------------------------->>
             Follicular period Start date : %d
-            Follicular period Start month : %d
+            Follicular period Start month : %s
             Follicular period Start year : %d
             Follicular period Next occurrence date  : %d
             Follicular period Next occurrence month : %s
