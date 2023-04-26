@@ -38,9 +38,11 @@ public class MonthlyCalculatorCircle {
             Menstrual period Start date : %d
             Menstrual period start month : %s
             Menstrual period start end  : %d
+            
             Menstrual period next Occurrence date : %d
             Menstrual period next occurrence month : %s
             Menstrual period next occurrence year : %d
+            
             Menstrual period End date : %d
             Menstrual period End Month : %s
             Menstrual period End year : %d
@@ -48,13 +50,28 @@ public class MonthlyCalculatorCircle {
             Follicular period Start date : %d
             Follicular period Start month : %s
             Follicular period Start year : %d
+            
             Follicular period Next occurrence date  : %d
             Follicular period Next occurrence month : %s
             Follicular period Next occurrence year  : %d
+            
             Follicular period End Date : %d
             Follicular period End Month : %s
             Follicular period End Year : %d
             <<--------------------------------------------->>
+            Ovulation period start date : %d
+            Ovulation period start Month : %d
+            Ovulation period start Year : %d
+            
+            Ovulation period Next occurrence Date : %d
+            Ovulation period Next occurrence Month : %s
+            Ovulation period Next occurrence Year : %d
+            
+            Ovulation period End date : %d
+            Ovulation period End Month : %s
+            Ovulation period End Year : %d
+            
+            
     """,menstrualPeriod.getMenstrualStartDate()
        ,menstrualPeriod.getMenstrualStartMonth()
         ,menstrualPeriod.getMenstrualStartYear(),
@@ -72,7 +89,13 @@ public class MonthlyCalculatorCircle {
      follicularPeriod.getFollicullarNextOccurrenceYear(),
      follicularPeriod.getFollicullarEndDate(),
      follicularPeriod.getFollicullarEndMonth(),
-     follicularPeriod.getFollicullarEndYear() );
+     follicularPeriod.getFollicullarEndYear(),
+    ovulationPeriod.getOvulationStartDate(),
+    ovulationPeriod.getOvulationStartMonth(),
+    ovulationPeriod.getOvulationStartYear(),
+    ovulationPeriod.getOvulationNextOccurrenceDate(),
+    ovulationPeriod.getOvulationNextOccurrenceMonth(),
+    ovulationPeriod.getOvulationNextOccurrenceYear()    );
    }
 
     public MonthlyCalculatorCircle() {
