@@ -33,8 +33,18 @@ public class MonthlyCalculatorCircle {
     private FreePeriodCalculatorResponse freePeriod;
 
 
+   public String toString() {
+    return String.format("""
+            Menstrual period Start date : %d
+            Menstrual period start month : %d
+            Menstrual period start end  : %d
+            
+            """,menstrualPeriod.getMenstrualStartDate(),menstrualPeriod.getMenstrualStartMonth()
+    ,menstrualPeriod.getMenstrualStartYear(),menstrualPeriod.getMenstrualNextOccurrenceDate(),menstrualPeriod.getMenstrualNextOccurrenceMonth(),menstrualPeriod.getMenstrualNextOccurrenceYear())
+   }
 
     public MonthlyCalculatorCircle() {
 
     }
+
 }

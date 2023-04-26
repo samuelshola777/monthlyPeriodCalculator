@@ -25,11 +25,11 @@ public class MonthlyCalculatorService {
     public MenstrualDaysResponse menstrualDayCalculator(String startDate, String startMonth, String checkHowManyMonths) throws DateZException, MonthZException {
         int number = Integer.parseInt(checkHowManyMonths);
               int  startingDate = validationDate(startDate);
-               Month startingMonth = Month.of(validationMonth(startMonth));
-               int monthInt = Integer.parseInt(startMonth);
+              int validated = validationMonth(startMonth);
+//               Month startingMonth = Month.of(validated);
               int  presentYear = currentYear.getYear();
 //              februaryException(startingDate,startingMonth);
-             LocalDate  eventDate = LocalDate.of(presentYear, startingMonth, startingDate);
+             LocalDate  eventDate = LocalDate.of(presentYear, validated, startingDate);
 
                 LocalDate nextOccurrence = eventDate.plusMonths(number);
            int     nextOccurrenceDate = nextOccurrence.getDayOfMonth();
@@ -39,7 +39,7 @@ public class MonthlyCalculatorService {
             int    endDate = eventDate.plusDays(5).getDayOfMonth();
             Month    endMonth = nextOccurrence.getMonth();
             int    endYear = eventDate.getYear();
-            String startMonthA = String.valueOf(startingMonth);
+            String startMonthA = String.valueOf(validated);
         return new MenstrualDaysResponse(startingDate,
         startMonthA, presentYear, nextOccurrenceDate,
         nextOccurrenceMonth, nextOccurrenceYear, endDate,
@@ -131,7 +131,7 @@ return new OvulationCalculatorResponse(checkHowManyMonths,startDate,startMonth,y
    //     System.out.println(monthlyCircle.menstrualDayCalculator("2", "2", "1"));
 //        System.out.println(monthlyCircle.follicularCalculator(9, 12, 1, 2023));
 //        System.out.println(monthlyCircle.luteCalculator(9, 12, 1, 2023));
-        System.out.println(monthlyCircle.monthlyCalculatorCircle("16","2","1"));
+        System.out.println(monthlyCircle.monthlyCalculatorCircle("16","8","1"));
     }
 
 }
