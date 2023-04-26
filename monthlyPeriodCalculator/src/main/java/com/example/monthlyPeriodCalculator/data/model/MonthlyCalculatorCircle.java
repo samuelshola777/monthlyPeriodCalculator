@@ -45,7 +45,16 @@ public class MonthlyCalculatorCircle {
             Menstrual period End Month : %s
             Menstrual period End year : %s
     <<--------------------------------------->>
-            
+            Follicular period Start date : %d
+            Follicular period Start month : %d
+            Follicular period Start year : %d
+            Follicular period Next occurrence date  : %d
+            Follicular period Next occurrence month : %s
+            Follicular period Next occurrence year  : %d
+            Follicular period End Date : %d
+            Follicular period End Month : %s
+            Follicular period End Year : %d
+            <<--------------------------------------------->>
     """,menstrualPeriod.getMenstrualStartDate()
        ,menstrualPeriod.getMenstrualStartMonth()
         ,menstrualPeriod.getMenstrualStartYear(),
@@ -54,7 +63,16 @@ public class MonthlyCalculatorCircle {
     menstrualPeriod.getMenstrualNextOccurrenceYear(),
     menstrualPeriod.getMenstrualEndDate(),
     menstrualPeriod.getMenstrualEndMonth(),
-    menstrualPeriod.getMenstrualEndYear());
+    menstrualPeriod.getMenstrualEndYear(),
+    follicularPeriod.getFollicullarStartDate(),
+    follicularPeriod.getFollicullarstartMonth(),
+    follicularPeriod.getFollicullarStartYear(),
+    follicularPeriod.getFollicullarNextOccurrenceDate()
+    ,follicularPeriod.getFollicullarNextOccurrenceMonth(),
+     follicularPeriod.getFollicullarNextOccurrenceYear(),
+     follicularPeriod.getFollicullarEndDate(),
+     follicularPeriod.getFollicullarEndMonth(),
+     follicularPeriod.getFollicullarEndYear() );
    }
 
     public MonthlyCalculatorCircle() {
