@@ -2,34 +2,46 @@ package com.example.monthlyPeriodCalculator.dto.response;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.Month;
-@NoArgsConstructor
+
 @Data
 @Entity
 @AllArgsConstructor
+@RequiredArgsConstructor
 public class FreePeriodCalculatorResponse {
     @Id
     private long id;
-
+@NonNull
     private int freePeriodStartDate;
+    @NonNull
     private Month freePeriodStartMonth;
+    @NonNull
     private int freePeriodStartYear;
-
+    @NonNull
     private int freePeriodNextOccurrenceDate;
+    @NonNull
     private Month freePeriodNextOccurrenceMonth;
+    @NonNull
     private int freePeriodNextOccurrenceYear;
-
+    @NonNull
     private int freePeriodEndDate;
+    @NonNull
+
     private Month freePeriodEndMonth;
+    @NonNull
     private int freePeriodEndYear;
+    @NonNull
     private int howManyMonth;
 
-    public FreePeriodCalculatorResponse(int startDate,Month startMonthz, int year, int nextOccuranceDate, Month nextOccuranceMonth, int nextOccuranceYear, int endDate, Month endMonth, int endYear) {
+    public FreePeriodCalculatorResponse() {
+        
     }
+
+    public FreePeriodCalculatorResponse(int startDate, Month startMonthz, int year, int nextOccuranceDate, Month nextOccuranceMonth, int nextOccuranceYear, int endDate, Month endMonth, int endYear) {
+    }
+
 
     public String toString() {
         return String.format("""
@@ -45,9 +57,14 @@ public class FreePeriodCalculatorResponse {
                      free period  end month: %s
                       free period  end year: %d
                            
-                           """, freePeriodStartDate, freePeriodStartMonth,
-                freePeriodStartYear, freePeriodNextOccurrenceDate,
-                freePeriodNextOccurrenceMonth, freePeriodNextOccurrenceYear,
-                freePeriodEndDate, freePeriodEndMonth, freePeriodEndYear);
+            """, freePeriodStartDate,
+                freePeriodStartMonth,
+                freePeriodStartYear,
+                freePeriodNextOccurrenceDate,
+                freePeriodNextOccurrenceMonth,
+                freePeriodNextOccurrenceYear,
+                freePeriodEndDate,
+                freePeriodEndMonth,
+                freePeriodEndYear);
     }
 }
