@@ -79,11 +79,13 @@ public class MonthlyCalculatorService {
             Month nextOccuranceMonth = nextOccurance.getMonth();
             int nextOccuranceYear = nextOccurance.getYear();
 
-            int endDate = eventDate.plusDays(4).getDayOfMonth();
-            Month endDateb = eventDate.plusDays(4).getMonth();
-        System.out.println("month ()->   "+endDateb);
-            Month endMonth = nextOccurance.getMonth();
-            int endYear = nextOccurance.getYear();
+//    int endDate = eventDate.plusDays(4).getDayOfMonth();
+//            Month endMonth = nextOccurance.getMonth();
+//            int endYear = nextOccurance.getYear();
+        LocalDate endZdate = nextOccurance.plusDays(4);
+        int endDate =   endZdate.getDayOfMonth();
+        Month endMonth =  endZdate.getMonth();
+        int endYear =    endZdate.getYear();
 
 return new OvulationCalculatorResponse(checkHowManyMonths,startDate,startMonth,year,nextOccuranceDate,nextOccuranceMonth,nextOccuranceYear,endDate,endMonth,endYear);
     }
