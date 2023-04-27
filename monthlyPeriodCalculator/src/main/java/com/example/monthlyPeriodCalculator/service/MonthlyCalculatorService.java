@@ -80,6 +80,8 @@ public class MonthlyCalculatorService {
             int nextOccuranceYear = nextOccurance.getYear();
 
             int endDate = eventDate.plusDays(4).getDayOfMonth();
+            Month endDateb = eventDate.plusDays(4).getMonth();
+        System.out.println("month ()->   "+endDateb);
             Month endMonth = nextOccurance.getMonth();
             int endYear = nextOccurance.getYear();
 
@@ -104,11 +106,27 @@ return new OvulationCalculatorResponse(checkHowManyMonths,startDate,startMonth,y
 
     public MonthlyCalculatorCircle monthlyCalculatorCircle(String startDate, String startMonth, String checkHowManyMonths) throws MonthZException, DateZException {
 
-        MenstrualDaysResponse menstrualDays = menstrualDayCalculator(startDate,startMonth,checkHowManyMonths);
-        FollicullarCalculatorResponse follicullar = follicularCalculator(menstrualDays.getMenstrualEndDate(),
-                menstrualDays.getMenstrualEndMonth(),menstrualDays.getHowManyMonth(),menstrualDays.getMenstrualEndYear());
-        OvulationCalculatorResponse ovulation = ovulationCalculator(follicullar.getFollicullarStartDate(), follicullar.getFollicullarstartMonth(), follicullar.getFollicullarStartYear(), follicullar.getHowManyMonth());
-        FreePeriodCalculatorResponse freePeriod = freePeriodicCalculator(ovulation.getOvulationEndDate(),ovulation.getOvulationEndMonth(),ovulation.getOvulationEndYear(),ovulation.getHowManyMonth());
+        MenstrualDaysResponse menstrualDays =
+        menstrualDayCalculator(startDate,startMonth,checkHowManyMonths);
+
+        FollicullarCalculatorResponse follicullar =
+        follicularCalculator(menstrualDays.getMenstrualEndDate(),
+        menstrualDays.getMenstrualEndMonth(),
+        menstrualDays.getHowManyMonth()
+        ,menstrualDays.getMenstrualEndYear());
+
+        OvulationCalculatorResponse ovulation =
+        ovulationCalculator(follicullar.getFollicullarEndDate(),
+        follicullar.getFollicullarEndMonth(),
+        follicullar.getHowManyMonth(),
+        follicullar.getFollicullarEndYear());
+        System.out.println(follicullar.getFollicullarEndMonth()+"  <-()");
+
+        FreePeriodCalculatorResponse freePeriod =
+        freePeriodicCalculator(ovulation.getOvulationEndDate(),
+        ovulation.getOvulationEndMonth(),
+        ovulation.getOvulationEndYear(),
+        ovulation.getHowManyMonth());
     return new MonthlyCalculatorCircle(menstrualDays,follicullar,ovulation,freePeriod);
     }
 
@@ -135,7 +153,7 @@ return new OvulationCalculatorResponse(checkHowManyMonths,startDate,startMonth,y
 
    //     System.out.println(monthlyCircle.menstrualDayCalculator("2", "2", "1"));
                  //   System.out.println(monthlyCircle.follicularCalculator(9, Month.of(12), 1, 2023));
-//        System.out.println(monthlyCircle.luteCalculator(9, 12, 1, 2023));
+       // System.out.println(monthlyCircle.ovulationCalculator(9, Month.of(12), 1, 2023));
        System.out.println(monthlyCircle.monthlyCalculatorCircle("16","8","1"));
     }
 

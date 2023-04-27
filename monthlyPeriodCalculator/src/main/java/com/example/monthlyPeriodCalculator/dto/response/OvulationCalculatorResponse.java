@@ -52,10 +52,15 @@ public class OvulationCalculatorResponse {
                         Ovulation end month: %s
                         Ovulation end year: %d
                            
-                           """, getOvulationStartDate(), getOvulationStartMonth()
-                , getOvulationStartYear(), getOvulationNextOccurrenceDate(),
-                getOvulationNextOccurrenceMonth(), getOvulationNextOccurrenceYear(),
-                getOvulationEndDate(), getOvulationEndMonth(), getOvulationEndYear());
+           """, getOvulationStartDate(),
+                getOvulationStartMonth()
+                , getOvulationStartYear(),
+                getOvulationNextOccurrenceDate(),
+                getOvulationNextOccurrenceMonth(),
+                getOvulationNextOccurrenceYear(),
+                getOvulationEndDate(),
+                getOvulationEndMonth(),
+                getOvulationEndYear());
 
     }
 }
