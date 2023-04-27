@@ -70,8 +70,19 @@ public class MonthlyCalculatorCircle {
             Ovulation period End date : %d
             Ovulation period End Month : %s
             Ovulation period End Year : %d
+            <<--------------------------------------------->> 
             
+            Free period Start date : %d
+            Free period Start date : %s
+            Free period Start date : %d
             
+           Free period Next Occurrence Date : %d
+           Free period Next Occurrence month : %s
+           Free period Next Occurrence year : %d
+           
+           Free period End Date : %d 
+           Free period End month : %s 
+           Free period End year : %d 
     """,menstrualPeriod.getMenstrualStartDate()
        ,menstrualPeriod.getMenstrualStartMonth()
         ,menstrualPeriod.getMenstrualStartYear(),
@@ -106,7 +117,19 @@ public class MonthlyCalculatorCircle {
 
     ovulationPeriod.getOvulationEndDate(),
     ovulationPeriod.getOvulationEndMonth(),
-    ovulationPeriod.getOvulationEndYear());
+    ovulationPeriod.getOvulationEndYear(),
+
+    freePeriod.getFreePeriodStartDate(),
+   freePeriod.getFreePeriodStartMonth(),
+   freePeriod.getFreePeriodStartYear(),
+
+   freePeriod.getFreePeriodNextOccurrenceDate(),
+   freePeriod.getFreePeriodNextOccurrenceMonth(),
+   freePeriod.getFreePeriodNextOccurrenceYear(),
+
+   freePeriod.getFreePeriodEndDate(),
+   freePeriod.getFreePeriodEndMonth(),
+   freePeriod.getFreePeriodEndYear());
    }
 
     public MonthlyCalculatorCircle() {

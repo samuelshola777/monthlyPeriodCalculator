@@ -119,7 +119,7 @@ return new OvulationCalculatorResponse(checkHowManyMonths,startDate,startMonth,y
         follicullar.getFollicullarEndMonth(),
         follicullar.getHowManyMonth(),
         follicullar.getFollicullarEndYear());
-        System.out.println(follicullar.getFollicullarEndMonth()+"  <-()");
+        
 
         FreePeriodCalculatorResponse freePeriod =
         freePeriodicCalculator(ovulation.getOvulationEndDate(),
