@@ -79,9 +79,6 @@ public class MonthlyCalculatorService {
             Month nextOccuranceMonth = nextOccurance.getMonth();
             int nextOccuranceYear = nextOccurance.getYear();
 
-//    int endDate = eventDate.plusDays(4).getDayOfMonth();
-//            Month endMonth = nextOccurance.getMonth();
-//            int endYear = nextOccurance.getYear();
         LocalDate endZdate = nextOccurance.plusDays(4);
         int endDate =   endZdate.getDayOfMonth();
         Month endMonth =  endZdate.getMonth();
