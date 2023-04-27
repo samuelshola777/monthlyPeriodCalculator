@@ -28,19 +28,17 @@ public class FreePeriodCalculatorResponse {
     @NonNull
     private int freePeriodEndDate;
     @NonNull
-
     private Month freePeriodEndMonth;
     @NonNull
     private int freePeriodEndYear;
-    @NonNull
+
     private int howManyMonth;
 
     public FreePeriodCalculatorResponse() {
         
     }
 
-    public FreePeriodCalculatorResponse(int startDate, Month startMonthz, int year, int nextOccuranceDate, Month nextOccuranceMonth, int nextOccuranceYear, int endDate, Month endMonth, int endYear) {
-    }
+
 
 
     public String toString() {
@@ -60,9 +58,11 @@ public class FreePeriodCalculatorResponse {
             """, freePeriodStartDate,
                 freePeriodStartMonth,
                 freePeriodStartYear,
+
                 freePeriodNextOccurrenceDate,
                 freePeriodNextOccurrenceMonth,
                 freePeriodNextOccurrenceYear,
+
                 freePeriodEndDate,
                 freePeriodEndMonth,
                 freePeriodEndYear);
